@@ -6,6 +6,15 @@ import { IEmployee } from '../helpers/interfase.js'
 function Users() {
    
     const [data, setdata] = useState<IEmployee[]>([])
+    const [search, setSearch] = useState("");
+
+    const searched = (e: React.ChangeEvent<HTMLInputElement>)=>{
+        setSearch(e.target.value)        
+    }
+
+    const results: IEmployee[] = !search ? data : data.filter((dato)=> dato.attributes.first_name.toLowerCase().includes(search.toLowerCase()))
+ 
+   
 
     useEffect(() =>{
         const fetchData = async ()=>{
@@ -20,6 +29,9 @@ function Users() {
   return (
     <div>
       <h1>Lista de empleados</h1>
+      <div>
+        <input value={search} onChange={searched} type="text" placeholder='Buscar...' />
+      </div>
       <hr />
       <table>
         <thead>
@@ -34,7 +46,7 @@ function Users() {
         <tbody>
             {
                 data.length > 0 ? (
-                    data.map((data)=>{
+                    results.map((data)=>{
                         return(
                         <tr key={data.id}>
                             <td>{data.attributes.first_name}</td>
