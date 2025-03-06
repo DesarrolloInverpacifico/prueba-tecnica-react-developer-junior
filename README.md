@@ -4,11 +4,28 @@
 Se ha desarrollado una API de empleados que gestiona horarios y registros de control de asistencia. La tarea consiste en consumir esta API y construir una interfaz funcional que permita visualizar, filtrar, ordenar y calcular información clave sobre los empleados y sus horas trabajadas.
 
 Actualmente existen 3 tipos de horarios:
+ 
  1. **Fixed**: Horario fijo de Lunes a Viernes de 08:00 a 18:00 con un descanso de 12:00 a 14:00 y Sabado de 08:00 a 12:00
  2. **Fixed_halftime**: Horario fijo de medio tiempo de Lunes a Viernes de 08:00 a 12:00
  3. **Flexible**: Horario rotativo no tiene día ni hora entrada establecido.
+
+## Estructura de los datos
+
+### Estructura del recurso (Horario laboral)
+![Estructura de empleado](/images/workshift_resource.png)
+
+### Estructura del recurso (Días laborales)
+![Estructura de empleado](/images/workshift_day_resource.png)
+
+### Estructura del recurso (Control de acceso)
+![Estructura de empleado](/images/access_control_resource.png)
+
+### Estructura de empleado
+![Estructura de empleado](/images/employee_resource.png)
+
 ## Objetivo de la prueba
 El candidato deberá:
+ 
   1. Consumir datos de la API y mostrar la lista de empleados y sus registros de asistencia.
   2.	Implementar funciones de filtrado y búsqueda para encontrar empleados según distintos criterios (nombre, cargo, fecha, etc.).
   3.	Calcular el total de horas trabajadas por empleado y determinar si hay horas extras.
@@ -19,15 +36,18 @@ El candidato deberá:
 
 ## Requerimientos técnicos 
 ### 1. Listado de empleado.
+
 Consumir la API de empleados y mostrar una tabla con los siguientes datos: 
  - Nombre
  - Apellido
  - Correo electronico
  - Cargo
  - Salario
+
 ### 2.	Filtros y búsqueda
   - Implementar un buscador para encontrar empleados por **nombre, correo o cargo**.
   - Aplicar filtro para ordenar los datos de la tabla por: **nombre** o **salario**
+
 ### 3.	Calculo de horas extras y salario a devengar
 - Determinar las horas extras con base en las horas trabajadas y el horario establecido
 - Clasificar las horas extras y/o recargos en:
@@ -45,9 +65,11 @@ Consumir la API de empleados y mostrar una tabla con los siguientes datos:
 ### 4.	Optimización y buenas practicas
   - Implementar gestión eficiente del estado utilizando React Hooks (useState, useEffect, useMemo, etc.).
   - Aplicar paginación o carga bajo demanda si la API devuelve una gran cantidad de datos.
+
 Para apoyarse y tener conceptos mas claros del caculo de horas laborales visitar el siguiente enlace: https://actualicese.com/horas-extra-y-recargos
 
 ### Instrucciones de entrega
+
 1.	Realiza un fork o clona el repo base de la prueba
 2.	Implementa la solución en React y organiza el código en componentes reutilizables.
 3.	Sube el código a un repositorio público en GitHub y comparte el enlace o realiza una pull request al repositorio principal.
