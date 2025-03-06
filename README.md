@@ -3,6 +3,10 @@
 ## Descripción del proyecto
 Se ha desarrollado una API de empleados que gestiona horarios y registros de control de asistencia. La tarea consiste en consumir esta API y construir una interfaz funcional que permita visualizar, filtrar, ordenar y calcular información clave sobre los empleados y sus horas trabajadas.
 
+Actualmente existen 3 tipos de horarios:
+ 1. **Fixed**: Horario fijo de Lunes a Viernes de 08:00 a 18:00 con un descanso de 12:00 a 14:00 y Sabado de 08:00 a 12:00
+ 2. **Fixed_halftime**: Horario fijo de medio tiempo de Lunes a Viernes de 08:00 a 12:00
+ 3. **Flexible**: Horario rotativo no tiene día ni hora entrada establecido.
 ## Objetivo de la prueba
 El candidato deberá:
   1. Consumir datos de la API y mostrar la lista de empleados y sus registros de asistencia.
