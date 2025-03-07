@@ -4,7 +4,7 @@ import { getUserById } from "../helpers/data"
 import { useParams } from "react-router-dom"
 import { MRT_ColumnDef } from "material-react-table"
 import Table from "./Table"
-import useSEO from "../hooks/useSEO
+import useSEO from "../hooks/useSEO"
 
 function Description() {
     useSEO({
