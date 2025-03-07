@@ -1,71 +1,59 @@
-import React, { useState, useEffect } from 'react'
-import {getData} from "../helpers/data.ts"
-import { IEmployee } from '../helpers/interfase.js'
-
+import { useEffect, useMemo, useState } from "react"
+import { IEmployee } from "../helpers/interfase";
+import { getData } from "../helpers/data";
+import { MRT_ColumnDef } from "material-react-table";
+import Table from "./Table";
 
 function Users() {
-   
-    const [data, setdata] = useState<IEmployee[]>([])
-    const [search, setSearch] = useState("");
 
-    const searched = (e: React.ChangeEvent<HTMLInputElement>)=>{
-        setSearch(e.target.value)        
-    }
-
-    const results: IEmployee[] = !search ? data : data.filter((dato)=> dato.attributes.first_name.toLowerCase().includes(search.toLowerCase()))
- 
-   
-
-    useEffect(() =>{
-        const fetchData = async ()=>{
-            const Data = await  getData()
-            console.log(Data);
-            
-            setdata(Data?.data || [])
-        }
-        fetchData()
-    },[])
+    const [data, setData] = useState<IEmployee[]>([])
     
+    const  columns = useMemo<MRT_ColumnDef<IEmployee>[]>(
+        ()=>[
+            {
+                accessorKey: "attributes.first_name",
+                header:"NOMBRE",
+                enableHiding: false
+            },
+            {
+                accessorKey: "attributes.last_name",
+                header:"APELLIDO",
+                enableHiding: false
+            },            
+            {
+                accessorKey: "attributes.email",
+                header:"CORREO ELECTRONICO",
+                enableHiding: false
+            },
+            {
+                accessorKey: "attributes.charge",
+                header:"CARGO",
+                enableHiding: false
+            },
+            {
+                accessorKey: "attributes.salary",
+                header:"SALARIO",
+                enableHiding: false
+            },
+
+        ], []
+    )
+
+    useEffect(()=>{
+        const fetchData = async () => {
+            try {
+                const Data = await getData();
+                setData(Data.data);
+            } catch (error) {
+                console.error("Error obteniendo datos:", error);
+            }
+        };
+        fetchData();
+    },[])
+      
   return (
     <div>
-      <h1>Lista de empleados</h1>
-      <div>
-        <input value={search} onChange={searched} type="text" placeholder='Buscar...' />
-      </div>
-      <hr />
-      <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Correo Electronico</th>
-                <th>Cargo</th>
-                <th>Salario</th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-                data.length > 0 ? (
-                    results.map((data)=>{
-                        return(
-                        <tr key={data.id}>
-                            <td>{data.attributes.first_name}</td>
-                            <td>{data.attributes.last_name}</td>
-                            <td>{data.attributes.email}</td>
-                            <td>{data.attributes.charge}</td>
-                            <td>{data.attributes.salary}</td>
-                        </tr>
-                        )
-                    })
-                ):(
-                    <tr>
-                        <td>Cargando datos...</td>
-                    </tr>
-                )
-            }
-            
-        </tbody>
-      </table>
+        <Table data={data} columns={columns}/>
     </div>
   )
 }

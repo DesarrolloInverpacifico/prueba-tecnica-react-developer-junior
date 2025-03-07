@@ -15,7 +15,7 @@ export interface IEmployee{
         },
     relationships:{
         workshifts: IWorkshift[],
-        accesControls:IAccesControls[]
+        accessControls:IAccessControls[]
     }
 }
 
@@ -49,13 +49,14 @@ export interface IWorkshiftDays{
 
 }
 
-export interface IAccesControls{
+export interface IAccessControls{
     type: string,
     id: number,
+    time: string | null,
     attributes:{
         check_in: string,
         check_out: string,
-        created_ad: string,
-        updated_ad: string,
+        created_at: string,
+        updated_at: string,
     }
 }
