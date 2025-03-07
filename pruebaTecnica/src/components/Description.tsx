@@ -4,8 +4,13 @@ import { getUserById } from "../helpers/data"
 import { useParams } from "react-router-dom"
 import { MRT_ColumnDef } from "material-react-table"
 import Table from "./Table"
+import useSEO from "../hooks/useSEO
 
 function Description() {
+    useSEO({
+        title:"Usuarios",
+        description:"lista de usuarios"
+    })
     const {id} = useParams()
     const idParam = Number(id)
     const [data, setData] = useState<IEmployee | undefined>(undefined)
