@@ -4,18 +4,16 @@ import { getUserById } from "../helpers/data"
 import { useParams } from "react-router-dom"
 import { MRT_ColumnDef } from "material-react-table"
 import Table from "./Table"
-import useSEO from "../hooks/useSEO"
+import { useSEO } from "../hooks/useSEO"
 
 function Description() {
-    useSEO({
-        title:"Usuarios",
-        description:"lista de usuarios"
-    })
+    
     const {id} = useParams()
     const idParam = Number(id)
     const [data, setData] = useState<IEmployee | undefined>(undefined)
     const [dataAccess, setDataAccess] = useState<IAccessControls[]>([])
     const [processedData, setProcessedData] = useState<IAccessControls[]>([]);
+    useSEO(`${data?.attributes.first_name} - detalles`, `Vista de detalles del usuario ${data?.attributes.first_name} ${data?.attributes.last_name}`)
     
     const  columns = useMemo<MRT_ColumnDef<IAccessControls>[]>(
         ()=>[

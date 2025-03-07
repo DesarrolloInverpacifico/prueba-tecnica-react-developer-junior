@@ -3,10 +3,12 @@ import { IEmployee } from "../helpers/interfase";
 import { getData } from "../helpers/data";
 import { MRT_ColumnDef } from "material-react-table";
 import Table from "./Table";
+import { useSEO } from "../hooks/useSEO";
 
 function Users() {
 
     const [data, setData] = useState<IEmployee[]>([])
+    useSEO("lista de usuarios", "listado de usuarios con registros")
     
     const  columns = useMemo<MRT_ColumnDef<IEmployee>[]>(
         ()=>[
