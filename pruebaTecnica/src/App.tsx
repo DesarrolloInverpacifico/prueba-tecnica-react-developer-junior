@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Users from './components/Users'
-import Description from './components/description'
+import Description from './components/Description'
 
 function App() {
 
