@@ -23,7 +23,10 @@ function Employees() {
     },[])
       
   return (
-    <div>
+    <div className="">
+        <div className="flex flex-col items-center justify-center my-8">
+            <h1 className="font-bold text-4xl">Listado De Empleados</h1>
+        </div>
         <Table data={data} columns={columnsEmployees}/>
     </div>
   )
