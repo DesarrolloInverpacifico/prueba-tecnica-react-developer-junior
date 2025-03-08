@@ -5,10 +5,10 @@ import { MRT_ColumnDef } from "material-react-table";
 import Table from "./Table";
 import { useSEO } from "../hooks/useSEO";
 
-function Users() {
+function Employees() {
 
     const [data, setData] = useState<IEmployee[]>([])
-    useSEO("lista de usuarios", "listado de usuarios con registros")
+    useSEO("lista de Empleados", "listado de registro de empleados")
     
     const  columns = useMemo<MRT_ColumnDef<IEmployee>[]>(
         ()=>[
@@ -60,4 +60,4 @@ function Users() {
   )
 }
 
-export default Users
+export default Employees

@@ -1,5 +1,5 @@
 export interface IEmployee{
-    type:string,
+    type:"employee",
     id:number,
     attributes:{
         first_name: string,
@@ -18,11 +18,11 @@ export interface IEmployee{
 }
 
 export interface IWorkshift {
-    type: string,
+    type: "workshift",
     id: number,
     attributes:{
         name: string,
-        shedule_type: string,
+        shedule_type: "fixed" | "fixed_halftime" | "flexible",
         maximun_weekly_hours: number,
         create_at: Date,
         updated_at: Date
@@ -33,14 +33,14 @@ export interface IWorkshift {
 }
 
 export interface IWorkshiftDays{
-    type: string,
+    type: "workshift_day",
     id: number,
     attributes:{
         day: string,
         start_at: string,
         finishied_at: string,
-        break_time_start_at: string,
-        break_time_finishied_at: string,
+        break_time_start_at?: string | null,
+        break_time_finishied_at?: string | null,
         create_at: Date,
         updated_at: Date
     }
@@ -48,7 +48,7 @@ export interface IWorkshiftDays{
 }
 
 export interface IAccessControls{
-    type: string,
+    type: "access_control",
     id: number,
     time: string | null,
     attributes:{

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import { MRT_ColumnDef } from "material-react-table"
 import Table from "./Table"
 import { useSEO } from "../hooks/useSEO"
+import { calculateWorkHours, ICalculo } from "../helpers/calculates"
 
 function Description() {
     
@@ -13,7 +14,10 @@ function Description() {
     const [data, setData] = useState<IEmployee | undefined>(undefined)
     const [dataAccess, setDataAccess] = useState<IAccessControls[]>([])
     const [processedData, setProcessedData] = useState<IAccessControls[]>([]);
+    const [calculo, setCalculo] = useState<ICalculo | null>(null)
     useSEO(`${data?.attributes.first_name} - detalles`, `Vista de detalles del usuario ${data?.attributes.first_name} ${data?.attributes.last_name}`)
+    
+    
     
     const  columns = useMemo<MRT_ColumnDef<IAccessControls>[]>(
         ()=>[
@@ -52,8 +56,12 @@ function Description() {
     },[])
 
     useEffect(()=>{
-        if(data){            
+        if(data){                        
             setDataAccess(data.relationships.accessControls)
+            const calcu = calculateWorkHours(data)
+            setCalculo(calcu)
+            
+            
         }
         
     },[data])   
@@ -85,7 +93,23 @@ function Description() {
    
   return (
     <div>
-        <h1> {data?.attributes.first_name.toLocaleUpperCase()} {data?.attributes.last_name.toLocaleUpperCase()} </h1>                                
+        <h1> {data?.attributes.first_name.toLocaleUpperCase()} {data?.attributes.last_name.toLocaleUpperCase()} </h1>    
+        {
+            calculo && ( 
+            <>
+                <h2>Horas trabajadas {Math.floor(calculo.totalWorkedHours)} Hora ordinarias {Math.floor(calculo.totalOrdinaryHours)} horas extras {Math.floor(calculo.totalOvertimeHours)} horas recargos {Math.floor(calculo.totalRecaudeHours)}
+                </h2>
+                {calculo.overtimeBreakdown.HED > 0 && <p>Horas extras diurnas: {Math.floor(calculo.overtimeBreakdown.HED)}</p>}
+                {calculo.overtimeBreakdown.HEN > 0 && <p>Horas extras nocturnas: {Math.floor(calculo.overtimeBreakdown.HEN)}</p>}
+                {calculo.overtimeBreakdown.HEDD > 0 && <p>Hora extras diurna dominical o festiva: {Math.floor(calculo.overtimeBreakdown.HEDD)}</p>}
+                {calculo.overtimeBreakdown.HEDN > 0 && <p>Hora extra dominical nocturna: {Math.floor(calculo.overtimeBreakdown.HEDN)}</p>}
+                {calculo.overtimeBreakdown.RC > 0 && <p>Recargo nocturno: {Math.floor(calculo.overtimeBreakdown.RC)}</p>}
+                {calculo.overtimeBreakdown.RD > 0 && <p>Recargo dominical: {Math.floor(calculo.overtimeBreakdown.RD)}</p>}
+                {calculo.overtimeBreakdown.RND > 0 && <p>Recargo nocturno dominical: {Math.floor(calculo.overtimeBreakdown.RND)}</p>}
+                <h2>Salario Basico: ${Math.floor(calculo.basySalary).toLocaleString('es-CO')} - Salario Total: ${Math.floor(calculo.totalSalary).toLocaleString('es-CO')}</h2>
+            </>
+            )
+        }                                  
                 <Table data={processedData} columns={columns} />            
     </div>
   )
