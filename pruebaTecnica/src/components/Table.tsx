@@ -16,7 +16,7 @@ function Table<T extends MRT_RowData>({ data, columns }: { data: T[] | undefined
             },
             style: { cursor: "pointer" }
         }),
-        enableRowSelection: true,
+        enableRowSelection: false,
         enableColumnOrdering: false,
         enableGlobalFilter: true,
         initialState: {
