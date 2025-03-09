@@ -91,12 +91,12 @@ function Description() {
                     <h2 className="absolute right-80 bottom-70 text-3xl font-bold bg-blue-700 text-amber-300 px-8">${Math.floor(calculo.totalSalary).toLocaleString('es-CO')}</h2>
                     <button 
                         onClick={back}
-                        className="absolute right-80 bottom-40 font-bold bg-blue-700 text-amber-300 px-8 py-2 rounded-full"
+                        className="absolute right-80 bottom-40 font-bold bg-blue-700 text-amber-300 px-8 py-2 rounded-full hover:scale-125 transition-all ease-in-out cursor-pointer"
                     >
                         Volver
                     </button>
                 </header> 
-                <section className="grid grid-cols-2 items-center justify-center mt-8">
+                <section className="grid grid-cols-2 items-center justify-center mt-8 animate-show">
                     <div className="flex items-center justify-center">
                         <img src="/logo.png" alt="logo" className="w-[40%] h-40%"/>
                     </div>
@@ -112,7 +112,7 @@ function Description() {
                     </div>
                 </section>  
                 <section className="bg-blue-700 grid grid-cols-2 items-center justify-items-center justify-center mt-8 p-8">
-                    <div className="text-amber-400 flex flex-col gap-2 font-bold text-2xl">
+                    <div className="text-amber-400 flex flex-col gap-2 font-bold text-2xl animate-show">
                         {calculo.overtimeBreakdown.HED >= 0 && <p>Horas extras diurnas: {Math.floor(calculo.overtimeBreakdown.HED)}</p>}
                         {calculo.overtimeBreakdown.HEN >= 0 && <p>Horas extras nocturnas: {Math.floor(calculo.overtimeBreakdown.HEN)}</p>}
                         {calculo.overtimeBreakdown.HEDD >= 0 && <p>Hora extras diurna dominical o festiva: {Math.floor(calculo.overtimeBreakdown.HEDD)}</p>}
@@ -121,12 +121,12 @@ function Description() {
                         {calculo.overtimeBreakdown.RD >= 0 && <p>Recargo dominical: {Math.floor(calculo.overtimeBreakdown.RD)}</p>}
                         {calculo.overtimeBreakdown.RND >= 0 && <p>Recargo nocturno dominical: {Math.floor(calculo.overtimeBreakdown.RND)}</p>}
                     </div>
-                    <div>
+                    <div className="animate-show">
                         <img src="/reloj.png" alt="iconoReloj" width={400}/>
                     </div>
                 </section>
-                <div className="flex flex-col justify-center items-center text-2xl text-blue-700 p-16 font-bold">
-                    <button onClick={showSesion} className="cursor-pointer">{show ? "Ocultar": "Ver Detalles"}</button>
+                <div className="flex flex-col justify-center items-center text-2xl text-blue-700 p-16 ">
+                    <button onClick={showSesion} className="cursor-pointer hover:font-bold transition-all ease-in-out">{show ? "Ocultar Detalles": "Ver Detalles"}</button>
                 </div>
                 
                 

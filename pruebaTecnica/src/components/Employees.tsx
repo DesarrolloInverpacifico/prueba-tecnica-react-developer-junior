@@ -38,10 +38,10 @@ function Employees() {
                 Ver Empleados
             </a>
         </section>
-        <div className="flex flex-col items-center justify-center my-8">
+        <div className="flex flex-col items-center justify-center my-8 animate-show">
             <h1 className="font-bold text-4xl text-blue-700">Listado De Empleados</h1>
         </div>
-        <section id="lista">
+        <section id="lista" className="animate-show">
             <Table data={data} columns={columnsEmployees}/>
         </section>
         <Footer/>

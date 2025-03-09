@@ -15,8 +15,17 @@ export const columnsDescription: MRT_ColumnDef<IAccessControls>[] = [
   },
   {
     accessorKey: "attributes.created_at",
-    header: "DIA",
+    header: "CREACION DEL REGISTRO",
     enableHiding: false,
+    Cell: ({ cell }) => {
+      const date = new Date(cell.getValue<string>());
+      const formattedDate = date.toLocaleString('es-CO', {
+        dateStyle: 'short',
+        timeStyle: 'short',
+      });
+
+      return formattedDate;
+    },
   },
   {
     accessorKey: "time",
@@ -40,6 +49,7 @@ export const columnsEmployees: MRT_ColumnDef<IEmployee>[] = [
     accessorKey: "attributes.email",
     header: "CORREO ELECTRONICO",
     enableHiding: false,
+    enableClickToCopy: true,
   },
   {
     accessorKey: "attributes.charge",
@@ -48,7 +58,16 @@ export const columnsEmployees: MRT_ColumnDef<IEmployee>[] = [
   },
   {
     accessorKey: "attributes.salary",
-    header: "SALARIO",
+    header: "SALARIO BASE",
     enableHiding: false,
+    Cell: ({ cell }) => {
+      const formattedSalary = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0, // Elimina los decimales
+      }).format(cell.getValue<number>());
+
+      return formattedSalary;
+    },
   },
 ];
