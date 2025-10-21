@@ -1,8 +1,8 @@
-# Prueba técnica – Desarrolladodr Fron-End React Junior
+# Prueba técnica – Desarrolladodr Front-End React Junior
 
 ## Descripción del proyecto
 
-SafeCity será una plataforma colaboativa de seguridad ciudadana que tiene como objetivo principal facilitar la comunicación entre ciudadanos y autoridades mediante el reporte colaborativo de incidentes de seguridad en tiempo real. Los usuarios pueden reportar eventos como robos, accidentes, zonas peligrosas y situaciones sospechosas, visualizar incidentes en un mapa interactivo, comentar y validar reportes, y recibir notificaciones sobre eventos cercanos a su ubicación. Las autoridades, por su parte, pueden gestionar incidentes, actualizar estados, generar reportes estadísticos y coordinar respuestas efectivas
+SafeCity será una plataforma colaborativa de seguridad ciudadana que tiene como objetivo principal facilitar la comunicación entre ciudadanos y autoridades mediante el reporte colaborativo de incidentes de seguridad en tiempo real. Los usuarios pueden reportar eventos como robos, accidentes, zonas peligrosas y situaciones sospechosas, visualizar incidentes en un mapa interactivo, comentar y validar reportes, y recibir notificaciones sobre eventos cercanos a su ubicación. Las autoridades, por su parte, pueden gestionar incidentes, actualizar estados, generar reportes estadísticos y coordinar respuestas efectivas
 
 Actualmente se cuenta con la [API](https://api2.safecity.fun/api/v1/docs#/), se busca desarrollar la infertaz grafica e integrarla con la API.
 
