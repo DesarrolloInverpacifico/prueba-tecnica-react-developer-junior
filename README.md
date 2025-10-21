@@ -1,78 +1,61 @@
-# Prueba técnica – Desarrollador Fron-End React Junior 
+# Prueba técnica – Desarrolladodr Fron-End React Junior
 
 ## Descripción del proyecto
-Se ha desarrollado una API de empleados que gestiona horarios y registros de control de asistencia. La tarea consiste en consumir esta API y construir una interfaz funcional que permita visualizar, filtrar, ordenar y calcular información clave sobre los empleados y sus horas trabajadas.
 
-Actualmente existen 3 tipos de horarios:
- 
- 1. **Fixed**: Horario fijo de Lunes a Viernes de 08:00 a 18:00 con un descanso de 12:00 a 14:00 y Sabado de 08:00 a 12:00
- 2. **Fixed_halftime**: Horario fijo de medio tiempo de Lunes a Viernes de 08:00 a 12:00
- 3. **Flexible**: Horario rotativo no tiene día ni hora entrada establecido.
+SafeCity será una plataforma colaboativa de seguridad ciudadana que tiene como objetivo principal facilitar la comunicación entre ciudadanos y autoridades mediante el reporte colaborativo de incidentes de seguridad en tiempo real. Los usuarios pueden reportar eventos como robos, accidentes, zonas peligrosas y situaciones sospechosas, visualizar incidentes en un mapa interactivo, comentar y validar reportes, y recibir notificaciones sobre eventos cercanos a su ubicación. Las autoridades, por su parte, pueden gestionar incidentes, actualizar estados, generar reportes estadísticos y coordinar respuestas efectivas
 
-## Estructura de los datos
+Actualmente se cuenta con la [API](https://api2.safecity.fun/api/v1/docs#/), se busca desarrollar la infertaz grafica e integrarla con la API.
 
-### Estructura del recurso (Horario laboral)
-![Estructura de empleado](/images/workshift_resource.png)
-
-### Estructura del recurso (Días laborales)
-![Estructura de empleado](/images/workshift_day_resource.png)
-
-### Estructura del recurso (Control de acceso)
-![Estructura de empleado](/images/access_control_resource.png)
-
-### Estructura de empleado
-![Estructura de empleado](/images/employee_resource.png)
+Existen dos roles **admin** y **user**.
 
 ## Objetivo de la prueba
-El candidato deberá:
- 
-  1. Consumir datos de la API y mostrar la lista de empleados y sus registros de asistencia.
-  2.	Implementar funciones de filtrado y búsqueda para encontrar empleados según distintos criterios (nombre, cargo, fecha, etc.).
-  3.	Calcular el total de horas trabajadas por empleado y determinar si hay horas extras.
-  4.	Clasificar las horas extras según el tipo (ejemplo: nocturnas, festivas, etc.).
-  5.	Calcular el salario total de un empleado con base en sus horas trabajadas y horas extras.
-  6.	Optimizar el rendimiento en el manejo de datos para evitar sobrecarga de memoria.
-  7.	Aplicar buenas prácticas de desarrollo, como separación de componentes, uso adecuado de hooks y gestión eficiente del estado.
 
-## Requerimientos técnicos 
-### 1. Listado de empleado.
+El candidado deberá:
 
-Consumir la API de empleados y mostrar una tabla con los siguientes datos: 
- - Nombre
- - Apellido
- - Correo electronico
- - Cargo
- - Salario
+- Crear la vistas e integrar el módulo de autenticación, [link](https://api2.safecity.fun/api/v1/docs#/operations/auth.login)
+- Crear el dashboard para el usuario con rol **admin**
+  - Crear las vistas para gestionar las categorias [link](https://api2.safecity.fun/api/v1/docs#/operations/incidentCategories.index)
+  - Crear vista para listar los incidentes reportados y ver el detalle de cada uno [link](https://api2.safecity.fun/api/v1/docs#/operations/incidents.index)
+- dashboard para el usuario con rol de **user**
+  - Listar incidentes deportados y ver su detalle
+  - Reportar incidente
 
-### 2.	Filtros y búsqueda
-  - Implementar un buscador para encontrar empleados por **nombre, correo o cargo**.
-  - Aplicar filtro para ordenar los datos de la tabla por: **nombre** o **salario**
+## Imagenes
 
-### 3.	Calculo de horas extras y salario a devengar
-- Determinar las horas extras con base en las horas trabajadas y el horario establecido
-- Clasificar las horas extras y/o recargos en:
-  - **HED**: Horas extras diurnas
-  - **HED**: Horas extras nocturnas
-  - **HEDD**: Hora extras diurna dominical o festiva
-  - **HEDN**: Hora extra dominical nocturna
-  - **RC**: Recargo nocturno
-  - **RD**: Recargo dominical
-  - **RND**: Recargo nocturno dominical
-- Calcular el salario estimado según
-  - Horas regulares trabajadas
-  - Tarifas adicionales por hora extra según el tipo
-    
-### 4.	Optimización y buenas practicas
-  - Implementar gestión eficiente del estado utilizando React Hooks (useState, useEffect, useMemo, etc.).
-  - Aplicar paginación o carga bajo demanda si la API devuelve una gran cantidad de datos.
+### Inicio de sesión
 
-Para apoyarse y tener conceptos mas claros del caculo de horas laborales visitar el siguiente enlace: https://actualicese.com/horas-extra-y-recargos
+![Inicio de sesión](./images/login.jpg)
+
+### Registro
+
+![Inicio de sesión](./images/register.jpg)
+
+### Olvide mi contraseña
+
+![Inicio de sesión](./images/forgot-password.jpg)
+
+### Restablecer contraseña
+
+![Inicio de sesión](./images/reset-password.jpg)
+
+### Listar incidente
+
+![Inicio de sesión](./images/incidnet_list.png)
+
+### Crear incidente
+
+![Inicio de sesión](./images/incident_create.png)
+
+### Ver incidente
+
+![Inicio de sesión](./images/incident_view.jpg)
 
 ### Instrucciones de entrega
 
-1.	Realiza un fork o clona el repo base de la prueba
-2.	Implementa la solución en React y organiza el código en componentes reutilizables.
-3.	Sube el código a un repositorio público en GitHub y comparte el enlace o realiza una pull request al repositorio principal.
+1. Realiza un fork o clona el repo base de la prueba
+2. Implementa la solución en React y organiza el código en componentes reutilizables.
+3. Sube el código a un repositorio público en GitHub y comparte el enlace o realiza una pull request al repositorio principal.
 
 ### Notas finales
+
 Esta prueba busca evaluar habilidades técnicas clave para un desarrollador React junior, incluyendo el consumo de APIs, manipulación de datos, optimización del código y buenas prácticas. No es obligatorio completar todos los puntos, pero se valorará la calidad del código y la solución presentada.
